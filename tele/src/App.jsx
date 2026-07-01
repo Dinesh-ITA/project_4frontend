@@ -9,7 +9,7 @@ function App() {
   
   // High-end flexible window scaling configuration
   const [durationValue, setDurationValue] = useState('60');
-  const [durationUnit, setDurationUnit] = useState('minutes'); // options: minutes, hours, days
+  const [durationUnit, setDurationUnit] = useState('minutes'); 
   
   // State to track who is currently viewing the console
   const [currentOperator, setCurrentOperator] = useState(null);
@@ -45,8 +45,7 @@ function App() {
 
     const creationTime = new Date();
     
-    // Convert selected unit scale directly to milliseconds
-    let multiplier = 60000; // default minutes
+    let multiplier = 60000; 
     if (durationUnit === 'hours') multiplier = 60000 * 60;
     if (durationUnit === 'days') multiplier = 60000 * 60 * 24;
 
@@ -124,17 +123,14 @@ function App() {
             WebkitTextFillColor: 'transparent',
             margin: '0' 
           }}>
-            EXECUTION HUB
+            REMINDER BY DINESH
           </h1>
-          <p style={{ color: '#64748b', fontSize: '0.95rem', marginTop: '6px', fontWeight: '500' }}>
-            Identify Active Console Operator
+          <p style={{ color: '#64748b', fontSize: '1.1rem', marginTop: '12px', fontWeight: '600' }}>
+            Are you Dinesh or Thilip?
           </p>
         </header>
 
         <div className="glass-card" style={{ padding: '32px', textAlign: 'center' }}>
-          <h3 style={{ marginTop: '0', marginBottom: '24px', fontSize: '1.1rem', fontWeight: '700', color: '#f8fafc' }}>
-            Select Your Workspace
-          </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <button 
               className="metallic-btn" 
@@ -160,7 +156,7 @@ function App() {
   return (
     <div style={{ maxWidth: '650px', width: '100%', padding: '24px 16px', boxSizing: 'border-box' }}>
       
-      <header style={{ marginBottom: '32px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', paddingTop: '10px' }}>
+      <header style={{ marginBottom: '32px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '12px', paddingTop: '10px' }}>
         <div>
           <h1 style={{ 
             fontSize: '1.8rem', 
@@ -171,7 +167,7 @@ function App() {
             WebkitTextFillColor: 'transparent',
             margin: '0' 
           }}>
-            EXECUTION HUB
+            REMINDER BY DINESH
           </h1>
           <p style={{ color: '#64748b', fontSize: '0.85rem', margin: '4px 0 0 0', fontWeight: '500' }}>
             Active Session: <strong style={{ color: currentOperator === 'Dinesh' ? '#818cf8' : '#38bdf8' }}>{currentOperator}</strong>
@@ -198,7 +194,6 @@ function App() {
         </button>
       </header>
 
-      {/* Task Creation Card with Days/Hours Config option */}
       <div className="glass-card" style={{ padding: '24px', marginBottom: '28px' }}>
         <h3 style={{ marginTop: '0', marginBottom: '20px', fontSize: '1.1rem', fontWeight: '700', color: '#f8fafc', letterSpacing: '-0.02em' }}>
           ⚡ Launch Operation
@@ -216,30 +211,31 @@ function App() {
             />
           </div>
 
-          {/* Three Column Grid layout for elegant proportions */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr', gap: '12px' }}>
-            <div>
-              <label style={{ display: 'block', fontSize: '0.75rem', color: '#64748b', marginBottom: '6px', fontWeight: '700', letterSpacing: '0.05em' }}>ASSIGN OPERATOR</label>
-              <select className="cyber-input" value={user} onChange={(e) => setUser(e.target.value)}>
+          {/* Cleaned layout grid with alignment fixes */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', alignItems: 'end' }}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <label style={{ fontSize: '0.68rem', color: '#64748b', marginBottom: '6px', fontWeight: '700', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>ASSIGN OPERATOR</label>
+              <select className="cyber-input" value={user} onChange={(e) => setUser(e.target.value)} style={{ height: '46px', boxSizing: 'border-box' }}>
                 <option value="Dinesh">Dinesh</option>
                 <option value="Thilip">Thilip</option>
               </select>
             </div>
 
-            <div>
-              <label style={{ display: 'block', fontSize: '0.75rem', color: '#64748b', marginBottom: '6px', fontWeight: '700', letterSpacing: '0.05em' }}>WINDOW DURATION</label>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <label style={{ fontSize: '0.68rem', color: '#64748b', marginBottom: '6px', fontWeight: '700', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>WINDOW DURATION</label>
               <input 
                 type="number" 
                 className="cyber-input"
                 value={durationValue} 
                 onChange={(e) => setDurationValue(e.target.value)}
                 min="1"
+                style={{ height: '46px', boxSizing: 'border-box' }}
               />
             </div>
 
-            <div>
-              <label style={{ display: 'block', fontSize: '0.75rem', color: '#64748b', marginBottom: '6px', fontWeight: '700', letterSpacing: '0.05em' }}>TIME SCALE</label>
-              <select className="cyber-input" value={durationUnit} onChange={(e) => setDurationUnit(e.target.value)}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <label style={{ fontSize: '0.68rem', color: '#64748b', marginBottom: '6px', fontWeight: '700', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>TIME SCALE</label>
+              <select className="cyber-input" value={durationUnit} onChange={(e) => setDurationUnit(e.target.value)} style={{ height: '46px', boxSizing: 'border-box' }}>
                 <option value="minutes">Minutes</option>
                 <option value="hours">Hours</option>
                 <option value="days">Days</option>
